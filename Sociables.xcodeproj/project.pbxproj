@@ -12,6 +12,9 @@
 		34CCAFFE1BB0EB2B00024510 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34CCAFFC1BB0EB2B00024510 /* Main.storyboard */; };
 		34CCB0001BB0EB2B00024510 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34CCAFFF1BB0EB2B00024510 /* Assets.xcassets */; };
 		34CCB00B1BB0EB2B00024510 /* SociablesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CCB00A1BB0EB2B00024510 /* SociablesTests.swift */; };
+		34CCB0161BB0F26800024510 /* CardSelectorCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CCB0151BB0F26800024510 /* CardSelectorCollectionView.swift */; };
+		34CCB0181BB0F30E00024510 /* CardChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CCB0171BB0F30E00024510 /* CardChallenge.swift */; };
+		34CCB01A1BB0FF8500024510 /* CardChallengeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CCB0191BB0FF8500024510 /* CardChallengeCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,9 @@
 		34CCB0061BB0EB2B00024510 /* SociablesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SociablesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		34CCB00A1BB0EB2B00024510 /* SociablesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SociablesTests.swift; sourceTree = "<group>"; };
 		34CCB00C1BB0EB2B00024510 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34CCB0151BB0F26800024510 /* CardSelectorCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardSelectorCollectionView.swift; sourceTree = "<group>"; };
+		34CCB0171BB0F30E00024510 /* CardChallenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardChallenge.swift; sourceTree = "<group>"; };
+		34CCB0191BB0FF8500024510 /* CardChallengeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardChallengeCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +86,9 @@
 				34CCAFFC1BB0EB2B00024510 /* Main.storyboard */,
 				34CCAFFF1BB0EB2B00024510 /* Assets.xcassets */,
 				34CCB0011BB0EB2B00024510 /* Info.plist */,
+				34CCB0151BB0F26800024510 /* CardSelectorCollectionView.swift */,
+				34CCB0171BB0F30E00024510 /* CardChallenge.swift */,
+				34CCB0191BB0FF8500024510 /* CardChallengeCollectionViewCell.swift */,
 			);
 			path = Sociables;
 			sourceTree = "<group>";
@@ -142,6 +151,7 @@
 				TargetAttributes = {
 					34CCAFF41BB0EB2B00024510 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = S8X486LY33;
 					};
 					34CCB0051BB0EB2B00024510 = {
 						CreatedOnToolsVersion = 7.1;
@@ -192,8 +202,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34CCB0161BB0F26800024510 /* CardSelectorCollectionView.swift in Sources */,
 				34CCAFFB1BB0EB2B00024510 /* ViewController.swift in Sources */,
 				34CCAFF91BB0EB2B00024510 /* AppDelegate.swift in Sources */,
+				34CCB0181BB0F30E00024510 /* CardChallenge.swift in Sources */,
+				34CCB01A1BB0FF8500024510 /* CardChallengeCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,10 +326,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Sociables/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tl.Sociables;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -325,10 +341,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Distribution";
 				INFOPLIST_FILE = Sociables/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tl.Sociables;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -375,6 +394,7 @@
 				34CCB0111BB0EB2B00024510 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		34CCB0121BB0EB2B00024510 /* Build configuration list for PBXNativeTarget "SociablesTests" */ = {
 			isa = XCConfigurationList;
@@ -383,6 +403,7 @@
 				34CCB0141BB0EB2B00024510 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
