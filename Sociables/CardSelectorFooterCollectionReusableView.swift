@@ -10,4 +10,6 @@ import UIKit
 
 class CardSelectorFooterCollectionReusableView: UICollectionReusableView {
         
+    @IBOutlet weak var playGameButton: UIButton!
+    @IBOutlet weak var playGameWasPressed: UIButton!
 }

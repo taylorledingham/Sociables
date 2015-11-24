@@ -12,7 +12,11 @@ class CardChallengeCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var cardTitleLabel: UILabel!
     @IBOutlet weak var cardDescriptionLabel: UILabel!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     
+    @IBAction func moreButtonWasSelected(sender: AnyObject) {
+    }
+    @IBOutlet weak var moreInfoButton: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -20,6 +24,14 @@ class CardChallengeCollectionViewCell: UICollectionViewCell {
     func setCardTitleAndDescription(title : String, description : String) {
         self.cardTitleLabel.text = title
         self.cardDescriptionLabel.text = description
+    }
+    
+    func changeUIForSelectedCard() {
+        self.backgroundImageView.image = UIImage(named: "cellBackground");
+    }
+    
+    func changeUIForUnSelectedCard() {
+        self.backgroundImageView.image = UIImage(named: "defaultCell");
     }
     
 }

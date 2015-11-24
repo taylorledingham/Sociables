@@ -1,10 +1,8 @@
 {
   "images" : [
     {
-      "orientation" : "landscape",
       "idiom" : "tv",
-      "extent" : "full-screen",
-      "minimum-system-version" : "9.0",
+      "filename" : "defaultCellBack.png",
       "scale" : "1x"
     }
   ],

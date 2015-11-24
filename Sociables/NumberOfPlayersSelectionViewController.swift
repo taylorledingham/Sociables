@@ -9,6 +9,7 @@
 import UIKit
 
 class NumberOfPlayersSelectionViewController: UIViewController {
+    @IBOutlet weak var numberOfPlayersTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,14 +23,14 @@ class NumberOfPlayersSelectionViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "cardSelector") {
+            if let numOfPlayers = NSInteger(numberOfPlayersTextField.text!) {
+                [NSUserDefaults .standardUserDefaults() .setInteger(numOfPlayers, forKey: "numOfPlayers")]
+            }
+            
+        }
     }
-    */
-
+    
 }
