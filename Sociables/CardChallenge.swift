@@ -33,6 +33,8 @@ enum CardValue: Int {
         return CardValue(val)
     }
     
+    static let allValues = [Ace, King, Queen, Jack, Ten, Nine, Eight, Seven, Six, Five, Four, Three, Two]
+    
 }
 
 enum CardSuit : String {
@@ -43,8 +45,6 @@ enum CardSuit : String {
 }
 
 struct card {
-    
-
     
     var value : CardValue
     let cardImage : UIImage
@@ -63,14 +63,14 @@ class CardChallenge: NSObject {
     let challengeName : String
     let challengeShortDescription : String
     let challengeFullDescription : String
-    var cardValue : card
+    var cardValue : CardValue
     var isSelected : Bool = false
     
     override init(){
         challengeName = "SOCIABLES"
         challengeShortDescription = "Let's play"
         challengeFullDescription = ""
-        cardValue = card.init(value: CardValue.Ace, suit: CardSuit.clubs)
+        cardValue = .none
         super.init()
     }
     
@@ -78,8 +78,7 @@ class CardChallenge: NSObject {
         challengeName = name
         challengeShortDescription = shortDesc
         challengeFullDescription = longDesc
-        cardValue = card.init(value: CardValue.Ace, suit: CardSuit.clubs)
-        
+        cardValue = .none
     }
     
     class func setUpInitialCards() -> [CardChallenge] {
@@ -103,7 +102,7 @@ class CardChallenge: NSObject {
         let socialbles = CardChallenge.init(name: "SOCIALBLES", shortDesc : "EVERYONE DRINKS", longDesc: "EVERYONE DRINKS");
         let thumbCard = CardChallenge.init(name: "Thumb Card", shortDesc : "Use this card at anytime by placing your thumb on the table. Last one to catch on, drinks!", longDesc: "You are now the “Thumb Master”. Any time you place your thumb on the table, every other player must immediately place their thumb on the table as well. The last person to do so must take a drink. This can be done repeatedly until another thumb card is drawn.");
         
-        cardArray = [boxHead, buddySystem, categories, kingsCup, ruleCard, ladiesDrink, menDrink, littleGreenMan, moose, neverHaveIEver, questionMaster, rhymeTime, socialbles, thumbCard]
+        cardArray = [boxHead, buddySystem, categories, kingsCup, ruleCard, ladiesDrink, menDrink, littleGreenMan, neverHaveIEver, questionMaster, rhymeTime, socialbles, thumbCard, moose]
         
         
         

@@ -14,7 +14,7 @@ private let addReuseIdentifier = "AddCell"
 class CardSelectorCollectionView: UICollectionViewController {
     
     struct Constants {
-        static let kNumberOfRequiredCards = 1
+        static let kNumberOfRequiredCards = 13
     }
     
     var cards : [CardChallenge] = []
@@ -29,13 +29,6 @@ class CardSelectorCollectionView: UICollectionViewController {
         self.collectionView?.allowsMultipleSelection = true
         self.setUpDefaultCardCallenges()
         self.collectionView?.remembersLastFocusedIndexPath = true
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-       // self.collectionView!.registerClass(CardChallengeCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,17 +39,8 @@ class CardSelectorCollectionView: UICollectionViewController {
     private func setUpDefaultCardCallenges() {
         
         self.cards = CardChallenge.setUpInitialCards()
+        
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -97,29 +81,35 @@ class CardSelectorCollectionView: UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if let cell : CardChallengeCollectionViewCell = self.collectionView?.cellForItemAtIndexPath(indexPath) as? CardChallengeCollectionViewCell {
-            let card = self.cards[indexPath.row]
-            if let cardSelectorheaderView = cardSelectorheaderView where self.numberOfSelectedCards <= Constants.kNumberOfRequiredCards  {
-                card.isSelected = !card.isSelected
-                self.numberOfSelectedCards++
-                cardSelectorheaderView.reduceCountDownLabel()
-                cell.changeUIForSelectedCard()
+            if indexPath.row == self.cards.count {
+                
+            } else {
+                let card = self.cards[indexPath.row]
+                if let cardSelectorheaderView = cardSelectorheaderView where self.numberOfSelectedCards <= Constants.kNumberOfRequiredCards  {
+                    card.isSelected = !card.isSelected
+                    self.numberOfSelectedCards++
+                    cardSelectorheaderView.reduceCountDownLabel()
+                    cell.changeUIForSelectedCard()
+                }
+                
+                if (numberOfSelectedCards == Constants.kNumberOfRequiredCards) {
+                    self.cardSelectorFooterView?.playGameButton.enabled = true
+                }
             }
-            
-            if (numberOfSelectedCards == Constants.kNumberOfRequiredCards) {
-                self.cardSelectorFooterView?.playGameButton.enabled = true
-            }
-            
         }
     }
     
     override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         if let cell : CardChallengeCollectionViewCell = self.collectionView?.cellForItemAtIndexPath(indexPath) as? CardChallengeCollectionViewCell {
+            if indexPath.row == self.cards.count {
+                
+            } else {
             let card = self.cards[indexPath.row]
             card.isSelected = !card.isSelected
             self.numberOfSelectedCards--
             if let cardSelectorheaderView = cardSelectorheaderView {
                 cardSelectorheaderView.increaseCountDownLabel()
-                cell.changeUIForUnSelectedCard()
+                cell.changeUIForUnselectedCard()
             }
             
             
@@ -127,7 +117,7 @@ class CardSelectorCollectionView: UICollectionViewController {
                 self.cardSelectorFooterView?.playGameButton.enabled = false
             }
         }
-
+        }
     }
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {

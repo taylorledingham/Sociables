@@ -30,8 +30,9 @@ class CardChallengeCollectionViewCell: UICollectionViewCell {
         self.backgroundImageView.image = UIImage(named: "cellBackground");
     }
     
-    func changeUIForUnSelectedCard() {
+    func changeUIForUnselectedCard() {
         self.backgroundImageView.image = UIImage(named: "defaultCell");
+        backgroundImageView.adjustsImageWhenAncestorFocused = true
     }
     
 }

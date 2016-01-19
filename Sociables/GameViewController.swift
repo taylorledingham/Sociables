@@ -17,18 +17,20 @@ class GameViewController: UIViewController {
 
     @IBOutlet weak var deckCardButton: UIButton!
     @IBOutlet weak var currentCardButton: UIButton!
+    @IBOutlet weak var cardTitleLabel: UILabel!
+    @IBOutlet weak var cardDescLabel: UILabel!
     
     func setUpGame () {
         if let rules = cardRules {
-        game = Game.init(numberOfPlayers: numberOfPlayers!, cards: rules)
+            game = Game.init(numberOfPlayers: numberOfPlayers!, cards: rules)
         } else {
             self.setUpQuickStartGame()
         }
     }
     
     private func setUpQuickStartGame() {
-        self.numberOfPlayers = 0
-        self.cardRules = Game.getRandomCardChallenges()
+        numberOfPlayers = 0
+        cardRules = Game.getRandomCardChallenges()
 }
 
     required init?(coder aDecoder: NSCoder) {
@@ -38,6 +40,15 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpGame()
+        deckCardButton.imageView?.adjustsImageWhenAncestorFocused = true
+        deckCardButton.clipsToBounds = false
+       // currentCardButton.clipsToBounds = false
+       // currentCardButton.imageView?.adjustsImageWhenAncestorFocused = true
+
+}
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         
         if (numberOfPlayers == 0) {
             let numberOfPlayersAlert = UIAlertController.init(title: "Number of Playera", message: "Please Enter the Number of Players that will be Playing", preferredStyle: UIAlertControllerStyle.Alert)
@@ -45,19 +56,15 @@ class GameViewController: UIViewController {
                 textField.keyboardType = .NumberPad
                 textField.placeholder = NSLocalizedString("Number of Players", comment: "")
             }
-            
             let acceptAction = UIAlertAction(title: "Save", style: .Default) {[unowned numberOfPlayersAlert] _ in
-                
                 if let enteredText = numberOfPlayersAlert.textFields?.first?.text {
                     self.numberOfPlayers = Int(enteredText)
-                    
+                    self.game = Game.init(numberOfPlayers: self.numberOfPlayers!, cards: self.cardRules!)
                 }
             }
-            
             numberOfPlayersAlert.addAction(acceptAction)
-            self.presentViewController(numberOfPlayersAlert, animated: true, completion: nil)
+            presentViewController(numberOfPlayersAlert, animated: true, completion: nil)
         }
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,9 +73,27 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func cardDeckSelected(sender: AnyObject) {
-        //self.currentCardSelected.setImage(game?.currentCard.cardImage, forState: UIControlState.Normal)
+        if (game?.currentIndex >= 51) {
+           let alert = UIAlertController(title: "Game is Finished", message: "Would you like to play again", preferredStyle: .Alert)
+            let playAgainAction = UIAlertAction(title: "Play Again", style: .Default, handler: { (UIAlertAction) -> Void in
+                
+            });
+            let returnAction = UIAlertAction(title: "Return to Main", style: .Default, handler: { (UIAlertAction) -> Void in
+                
+            });
+            alert.addAction(playAgainAction)
+            alert.addAction(returnAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+        } else {
         game?.currentIndex++
         game?.currentCard = (game?.cardDeck[(game?.currentIndex)!])!
+        currentCardButton.setImage(game?.currentCard.cardImage, forState: .Normal)
+            if let currentCardChallenge = game?.getCardChallenge((game?.currentCard.value)!) {
+            cardDescLabel.text = currentCardChallenge.challengeFullDescription
+            cardTitleLabel.text = currentCardChallenge.challengeName
+            }
+            
+        }
     }
 
     @IBOutlet weak var currentCardSelected: UIButton!

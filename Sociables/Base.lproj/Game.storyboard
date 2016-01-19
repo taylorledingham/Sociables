@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" initialViewController="dlQ-Xk-efu">
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" initialViewController="dlQ-Xk-efu">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Game View Controller-->
@@ -19,39 +18,96 @@
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="20d-QF-COA">
-                                <rect key="frame" x="960" y="300" width="320" height="480"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E3t-rv-VcF">
+                                <rect key="frame" x="580" y="299" width="370" height="482"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="370" id="QFW-UH-hVy"/>
+                                    <constraint firstAttribute="height" constant="482" id="olA-j5-TJN"/>
+                                </constraints>
                                 <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
-                                <state key="normal" backgroundImage="2_clubs2"/>
+                                <state key="normal" image="redCard"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="keyPath">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="cardDeckSelected:" destination="dlQ-Xk-efu" eventType="primaryActionTriggered" id="wAr-mM-9T4"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDc-Zm-6oi">
+                                <rect key="frame" x="580" y="88" width="750" height="88"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="88" id="9VT-zS-wRJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="card desc" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2F-0H-wI9">
+                                <rect key="frame" x="580" y="834" width="750" height="126"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="126" id="Nd4-tI-aL2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="20d-QF-COA">
+                                <rect key="frame" x="960" y="299" width="370" height="482"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="370" id="LQ3-px-2I9"/>
+                                    <constraint firstAttribute="height" constant="482" id="PnZ-TT-eed"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" image="10_clubs"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E3t-rv-VcF">
-                                <rect key="frame" x="630" y="300" width="320" height="480"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="frr-jh-V6G">
+                                <rect key="frame" x="40" y="20" width="250" height="200"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qCd-jw-0Do">
+                                        <rect key="frame" x="15" y="20" width="220" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" secondItem="E3t-rv-VcF" secondAttribute="width" multiplier="3/2" id="Yx6-gX-6IP"/>
+                                    <constraint firstItem="qCd-jw-0Do" firstAttribute="leading" secondItem="frr-jh-V6G" secondAttribute="leading" constant="15" id="DFJ-Kt-yoA"/>
+                                    <constraint firstAttribute="height" priority="250" constant="200" id="KPZ-W9-njg"/>
+                                    <constraint firstItem="qCd-jw-0Do" firstAttribute="top" secondItem="frr-jh-V6G" secondAttribute="top" constant="20" id="Kfr-WU-HPl"/>
+                                    <constraint firstAttribute="trailing" secondItem="qCd-jw-0Do" secondAttribute="trailing" constant="15" id="Khi-ZD-dVS"/>
+                                    <constraint firstAttribute="width" constant="250" id="tYs-M3-Bhr"/>
                                 </constraints>
-                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
-                                <state key="normal" backgroundImage="redCard"/>
-                                <connections>
-                                    <action selector="cardDeckSelected:" destination="dlQ-Xk-efu" eventType="primaryActionTriggered" id="wAr-mM-9T4"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="frr-jh-V6G" firstAttribute="leading" secondItem="BCg-gi-HIk" secondAttribute="leadingMargin" constant="20" id="1J4-ag-YT2"/>
+                            <constraint firstItem="frr-jh-V6G" firstAttribute="top" secondItem="svw-Gt-mWA" secondAttribute="bottom" constant="20" id="1uC-Ac-EN9"/>
                             <constraint firstItem="E3t-rv-VcF" firstAttribute="centerY" secondItem="BCg-gi-HIk" secondAttribute="centerY" id="6aS-qC-1yF"/>
+                            <constraint firstItem="CDc-Zm-6oi" firstAttribute="trailing" secondItem="20d-QF-COA" secondAttribute="trailing" id="OdA-DV-4H2"/>
                             <constraint firstItem="E3t-rv-VcF" firstAttribute="trailing" secondItem="BCg-gi-HIk" secondAttribute="centerX" constant="-10" id="Rho-TG-gVJ"/>
+                            <constraint firstItem="z2F-0H-wI9" firstAttribute="top" secondItem="E3t-rv-VcF" secondAttribute="bottom" constant="53" id="V7K-ba-zLQ"/>
+                            <constraint firstItem="CDc-Zm-6oi" firstAttribute="top" secondItem="svw-Gt-mWA" secondAttribute="bottom" constant="88" id="Vnw-sw-rZ9"/>
+                            <constraint firstItem="z2F-0H-wI9" firstAttribute="leading" secondItem="E3t-rv-VcF" secondAttribute="leading" id="VrQ-7W-84h"/>
                             <constraint firstItem="20d-QF-COA" firstAttribute="centerY" secondItem="BCg-gi-HIk" secondAttribute="centerY" id="al1-J0-THv"/>
+                            <constraint firstItem="wI6-a5-0dY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="frr-jh-V6G" secondAttribute="bottom" constant="20" id="cra-sF-XTK"/>
                             <constraint firstItem="20d-QF-COA" firstAttribute="leading" secondItem="E3t-rv-VcF" secondAttribute="trailing" constant="10" id="e2s-mJ-1YT"/>
                             <constraint firstItem="20d-QF-COA" firstAttribute="height" secondItem="E3t-rv-VcF" secondAttribute="height" id="eQs-s7-3Hi"/>
+                            <constraint firstItem="CDc-Zm-6oi" firstAttribute="leading" secondItem="E3t-rv-VcF" secondAttribute="leading" id="gxP-kC-Nes"/>
                             <constraint firstItem="20d-QF-COA" firstAttribute="width" secondItem="E3t-rv-VcF" secondAttribute="width" id="xUF-fE-lqV"/>
-                            <constraint firstItem="E3t-rv-VcF" firstAttribute="width" secondItem="BCg-gi-HIk" secondAttribute="width" multiplier="1/6" id="xfd-wa-cbq"/>
+                            <constraint firstItem="z2F-0H-wI9" firstAttribute="trailing" secondItem="20d-QF-COA" secondAttribute="trailing" id="z67-xz-tPN"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cardDescLabel" destination="z2F-0H-wI9" id="kqg-6k-vl2"/>
+                        <outlet property="cardTitleLabel" destination="CDc-Zm-6oi" id="SmA-kf-72u"/>
                         <outlet property="currentCardButton" destination="20d-QF-COA" id="LEx-Kv-Df7"/>
                         <outlet property="currentCardSelected" destination="20d-QF-COA" id="brL-8B-aW4"/>
                         <outlet property="deckCardButton" destination="E3t-rv-VcF" id="o4r-iO-cZ2"/>
@@ -63,7 +119,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="2_clubs2" width="1038" height="1446"/>
+        <image name="10_clubs" width="322" height="482"/>
         <image name="redCard" width="1024" height="768"/>
     </resources>
 </document>
